@@ -20,12 +20,12 @@ class ProductFactory extends Factory
     {
         return [
             //
-            'name' => fake()->sentence(), 
+            'name' => fake()->sentence(),
             'description' => fake()->paragraph(),
             'price' => fake()->numerify('#####'),
             'currency' => Product::DEFAULT_CURRENCY,
             'display_image_url' => Product::DEFAULT_IMAGE,
-            'category_id' => Category::factory()
+            'category_id' => Category::factory(),
         ];
     }
 }

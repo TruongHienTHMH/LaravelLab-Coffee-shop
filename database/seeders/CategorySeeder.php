@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 class CategorySeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * @var array<int, array{id: int, name: string, description: string}>
      */
     public $categories = [
         [
@@ -23,18 +23,18 @@ class CategorySeeder extends Seeder
         ],
     ];
 
-    private function getCategories()
+    /**
+     * @return array<int, array{id: int, name: string, description: string}>
+     */
+    private function getCategories(): array
     {
         return $this->categories;
     }
 
-
     public function run(): void
     {
-        //
         foreach ($this->getCategories() as $category) {
             Category::create($category);
         }
-
     }
 }
