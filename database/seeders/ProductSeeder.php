@@ -125,7 +125,7 @@ class ProductSeeder extends Seeder
         foreach ($this->getProducts() as $product) {
             $product['currency'] = self::DEFAULT_CURRENCY;
 
-            Product::create($product);
+            Product::firstOrCreate(['id' => $product['id']], $product);
         }
     }
 }

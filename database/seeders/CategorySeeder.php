@@ -34,7 +34,10 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         foreach ($this->getCategories() as $category) {
-            Category::create($category);
+            Category::firstOrCreate(['id' => $category['id']], $category);
         }
+
+        // Sinh thêm 1.000 records.
+        Category::factory()->count(1000)->create();
     }
 }
