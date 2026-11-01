@@ -21,7 +21,6 @@ class Product extends Model
         'category_id',
     ];
 
-
     public const DEFAULT_CURRENCY = 'VNĐ';
 
     public const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1509042239860-f550ce710b93';

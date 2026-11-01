@@ -4,8 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Contracts\Database\Query\Builder;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -15,14 +15,14 @@ class ProductController extends Controller
     public function index()
     {
         $query = Product::query()
-            ->when(request('with'), function(Builder $query, $with){
+            ->when(request('with'), function (Builder $query, $with) {
                 $query->with(explode(',', $with));
             })
-            ->when(request('search'), function(Builder $query, $search) {
+            ->when(request('search'), function (Builder $query, $search) {
                 return $query->where('name', 'like', '%'.$search);
             });
 
-            return $query->simplePaginate();
+        return $query->simplePaginate();
     }
 
     /**
@@ -30,7 +30,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-         $validated = $request->validate([
+        $validated = $request->validate([
             'name' => 'required|unique:products|max:255',
             'description' => 'required|max:255',
             'price' => 'required|numeric',
