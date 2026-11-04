@@ -18,4 +18,8 @@ Route::prefix('v1')->group(function () {
         'products',
         ProductController::class
     );
+    Route::get('/test-error', function () {
+        throw new Exception("Lỗi thử nghiệm hệ thống!");
+    });
+
 });
